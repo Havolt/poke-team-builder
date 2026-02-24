@@ -1,35 +1,20 @@
-import { useEffect } from "react";
-
-const get151Pokemon = async (controller: AbortController) => {
-  try {
-    const response = await fetch(
-      "https://pokeapi.co/api/v2/pokemon?limit=151",
-      {
-        signal: controller.signal,
-      },
-    );
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error("Error fetching Pokémon data:", error);
-  }
-};
+import POKEMON_LIST from "../../assets/pokeSpriteListFull.json";
+import LIST_CONSTANTS from "../../constants/links.json";
 
 function PokePicker() {
-  useEffect(() => {
-    console.log("PokePicker mounted");
+  const pokemonElements = POKEMON_LIST.pokemon.map((pokemon) => {
+    return (
+      <div key={pokemon.name}>
+        <img
+          src={`${LIST_CONSTANTS.spriteBaseUrl}${pokemon.sprites.front_default}`}
+          alt={pokemon.name}
+        />
+        <p>{pokemon.name}</p>
+      </div>
+    );
+  });
 
-    const controller = new AbortController();
-
-    const fetchPromise = get151Pokemon(controller);
-
-    return () => {
-      // This cancels the first request when React "re-mounts"
-      controller.abort();
-      console.log("PokePicker unmounted");
-    };
-  }, []);
-  return <div>PokePicker</div>;
+  return <div>{pokemonElements}</div>;
 }
 
 export default PokePicker;
