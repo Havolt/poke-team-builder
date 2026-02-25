@@ -2,12 +2,22 @@ import Styles from "./PokePickerMon.module.css";
 
 import LIST_CONSTANTS from "../../constants/links.json";
 
-function PokePickerMon({ name, imgPath }: { name: string; imgPath: string }) {
+type PokePickerMonProps = {
+  name: string;
+  imgPath: string;
+  onClick: () => void;
+};
+
+function PokePickerMon({ name, imgPath, onClick }: PokePickerMonProps) {
   return (
-    <div className={Styles["poke-picker-mon"]}>
+    <button
+      className={Styles["poke-picker-mon"]}
+      onClick={onClick}
+      onKeyDown={(e) => e.key === "Enter" && onClick}
+    >
       <img src={`${LIST_CONSTANTS.spriteBaseUrl}${imgPath}`} alt={name} />
       <p>{name}</p>
-    </div>
+    </button>
   );
 }
 
