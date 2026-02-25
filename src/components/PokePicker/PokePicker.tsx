@@ -1,16 +1,14 @@
 import POKEMON_LIST from "../../assets/pokeSpriteListFull.json";
-import LIST_CONSTANTS from "../../constants/links.json";
+import PokePickerMon from "../PokePickerMon";
 
 function PokePicker() {
   const pokemonElements = POKEMON_LIST.pokemon.map((pokemon) => {
     return (
-      <div key={pokemon.name}>
-        <img
-          src={`${LIST_CONSTANTS.spriteBaseUrl}${pokemon.sprites.front_default}`}
-          alt={pokemon.name}
-        />
-        <p>{pokemon.name}</p>
-      </div>
+      <PokePickerMon
+        key={pokemon.name}
+        name={pokemon.name}
+        imgPath={pokemon.sprites.front_default}
+      />
     );
   });
 
