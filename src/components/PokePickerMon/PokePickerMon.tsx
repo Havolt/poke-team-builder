@@ -6,7 +6,7 @@ function PokePickerMon({ name, imgPath }: { name: string; imgPath: string }) {
   return (
     <div className={Styles["poke-picker-mon"]}>
       <img src={`${LIST_CONSTANTS.spriteBaseUrl}${imgPath}`} alt={name} />
-      {name}
+      <p>{name}</p>
     </div>
   );
 }
