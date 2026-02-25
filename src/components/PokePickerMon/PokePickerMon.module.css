@@ -20,7 +20,8 @@
 }
 
 .poke-picker-mon p {
-  font-size: 0.8rem;
+  font-size: 1.4rem;
   text-transform: capitalize;
   margin: 0;
+  font-weight: bold;
 }
