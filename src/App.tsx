@@ -8,16 +8,29 @@ import { useState, useRef, useEffect } from "react";
 
 import "./App.css";
 
+// Very basic type definitions for Pokémon data. Can be expanded as needed.
+type Pokemon = {
+  id: number;
+  name: string;
+  sprites?: { front_default?: string; [key: string]: any };
+  types?: { slot: number; type: { name: string } }[];
+  stats?: { base_stat: number; stat: { name: string } }[];
+};
+
+type Pokedex = Record<number, Pokemon | null>;
+
 function App() {
   const [selectedPokemon, setSelectedPokemon] = useState<number | null>(null);
   const [userParty, setUserParty] = useState<number[]>([]);
 
-  const pokedex = useRef<{ [key: number]: any }>({}).current;
+  // No need to cause rerenders when pokedex is updated
+  const pokedex = useRef<Pokedex>({}).current;
 
   const handleUnselectPokemon = () => {
     setSelectedPokemon(null);
   };
 
+  // TODO: Move this out of App and into utility file
   const fetchPokemonData = async (pokemonId: number) => {
     if (pokedex[pokemonId]) {
       return pokedex[pokemonId];
