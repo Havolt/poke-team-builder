@@ -1,3 +1,4 @@
 {
-  "spriteBaseUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+  "spriteBaseUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/",
+  "pokeApiBaseUrl": "https://pokeapi.co/api/v2/pokemon/"
 }
