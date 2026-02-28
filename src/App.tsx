@@ -30,7 +30,6 @@ function App() {
     setSelectedPokemon(null);
   };
 
-  // TODO: Move this out of App and into utility file
   const fetchPokemonData = async (pokemonId: number) => {
     if (pokedex[pokemonId]) {
       return pokedex[pokemonId];
@@ -51,7 +50,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetchPokemonData(1);
+    // fetchPokemonData(1);
   });
 
   return (
