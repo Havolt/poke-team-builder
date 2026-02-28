@@ -17,7 +17,7 @@ type Pokemon = {
   stats?: { base_stat: number; stat: { name: string } }[];
 };
 
-type Pokedex = Record<number, Pokemon | null>;
+type Pokedex = Record<number, Pokemon | "fetching" | null>;
 
 function App() {
   const [selectedPokemon, setSelectedPokemon] = useState<number | null>(null);
@@ -37,12 +37,14 @@ function App() {
     }
 
     try {
+      pokedex[pokemonId] = "fetching"; // Mark as loading
       const response = await fetch(`${links.pokeApiBaseUrl}${pokemonId}`);
       const data = await response.json();
       pokedex[pokemonId] = data;
       console.log("Fetched Pokémon data:", data);
       return data;
     } catch (error) {
+      pokedex[pokemonId] = null; // Mark as failed
       console.error("Error fetching Pokémon data:", error);
       return null;
     }
