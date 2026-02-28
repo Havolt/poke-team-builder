@@ -4,17 +4,17 @@ import PokePickerMon from "../PokePickerMon";
 import Styles from "./pokePicker.module.css";
 
 type PokePickerProps = {
-  selectedPokemon: number | null;
-  setSelectedPokemon: (id: number | null) => void;
+  currInfoMon: number | null;
+  setCurrInfoMon: (id: number | null) => void;
 };
 
-function PokePicker({ selectedPokemon, setSelectedPokemon }: PokePickerProps) {
+function PokePicker({ currInfoMon, setCurrInfoMon }: PokePickerProps) {
   // Use the index + 1 as it lines up with pokemon IDs
   const handleMonClick = (id: number) => {
-    if (selectedPokemon === id) {
-      setSelectedPokemon(null);
+    if (currInfoMon === id) {
+      setCurrInfoMon(null);
     } else {
-      setSelectedPokemon(id);
+      setCurrInfoMon(id);
     }
   };
 

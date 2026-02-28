@@ -8,6 +8,7 @@ import links from "./constants/links.json";
 import { useState, useRef, useEffect } from "react";
 
 import "./App.css";
+import PokeInfo from "./components/PokeInfo";
 
 // Very basic type definitions for Pokémon data. Can be expanded as needed.
 type Pokemon = {
@@ -21,14 +22,14 @@ type Pokemon = {
 type Pokedex = Record<number, Pokemon | "fetching" | null>;
 
 function App() {
-  const [selectedPokemon, setSelectedPokemon] = useState<number | null>(null);
+  const [currInfoMon, setCurrInfoMon] = useState<number | null>(null);
   const [userParty, setUserParty] = useState<number[]>([]);
 
   // No need to cause rerenders when pokedex is updated
   const pokedex = useRef<Pokedex>({}).current;
 
   const handleUnselectPokemon = () => {
-    setSelectedPokemon(null);
+    setCurrInfoMon(null);
   };
 
   const fetchPokemonData = async (pokemonId: number) => {
@@ -66,12 +67,16 @@ function App() {
         </aside>
         <main>
           <PokePicker
-            selectedPokemon={selectedPokemon}
-            setSelectedPokemon={setSelectedPokemon}
+            currInfoMon={currInfoMon}
+            setCurrInfoMon={setCurrInfoMon}
           />
         </main>
       </div>
-      {/* <PokePopup /> */}
+      {currInfoMon !== null && (
+        <PokePopup>
+          <PokeInfo currInfoMon={currInfoMon} />
+        </PokePopup>
+      )}
     </>
   );
 }
