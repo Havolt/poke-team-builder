@@ -1,7 +1,13 @@
 import React from "react";
 
-function PokePopup() {
-  return <div>PokePopup</div>;
+import Styles from "./PokePopup.module.css";
+
+function PokePopup({ children }: { children: React.ReactNode }) {
+  return (
+    <div className={Styles["poke-popup-wrapper"]}>
+      <div className={Styles["poke-popup"]}>{children}</div>
+    </div>
+  );
 }
 
 export default PokePopup;

@@ -1,6 +1,7 @@
 import PokeHeader from "./components/PokeHeader";
 import PokePicker from "./components/PokePicker";
 import PokeParty from "./components/PokeParty";
+import PokePopup from "./components/PokePopup";
 
 import links from "./constants/links.json";
 
@@ -70,6 +71,7 @@ function App() {
           />
         </main>
       </div>
+      {/* <PokePopup /> */}
     </>
   );
 }
