@@ -24,6 +24,7 @@ type Pokedex = Record<number, Pokemon | "fetching" | null>;
 function App() {
   const [currInfoMon, setCurrInfoMon] = useState<number | null>(null);
   const [userParty, setUserParty] = useState<number[]>([]);
+  const [currMonData, setCurrMonData] = useState<Pokemon | null>(null);
 
   // No need to cause rerenders when pokedex is updated
   const pokedex = useRef<Pokedex>({}).current;
@@ -32,9 +33,19 @@ function App() {
     setCurrInfoMon(null);
   };
 
+  const handleSelectPokemon = (id: number) => {
+    setCurrInfoMon(id);
+    fetchPokemonData(id);
+  };
+
   const fetchPokemonData = async (pokemonId: number) => {
+    if (pokedex[pokemonId] === "fetching") {
+      console.log(`Already fetching data for Pokémon ID ${pokemonId}`);
+      return null;
+    }
+
     if (pokedex[pokemonId]) {
-      return pokedex[pokemonId];
+      setCurrMonData(pokedex[pokemonId]);
     }
 
     try {
@@ -43,6 +54,7 @@ function App() {
       const data = await response.json();
       pokedex[pokemonId] = data;
       console.log("Fetched Pokémon data:", data);
+      setCurrMonData(data);
       return data;
     } catch (error) {
       pokedex[pokemonId] = null; // Mark as failed
@@ -66,14 +78,11 @@ function App() {
           />
         </aside>
         <main>
-          <PokePicker
-            currInfoMon={currInfoMon}
-            setCurrInfoMon={setCurrInfoMon}
-          />
+          <PokePicker setCurrInfoMon={handleSelectPokemon} />
         </main>
       </div>
       {currInfoMon !== null && (
-        <PokePopup handleClose={() => setCurrInfoMon(null)}>
+        <PokePopup handleClose={handleUnselectPokemon}>
           <PokeInfo currInfoMon={currInfoMon} />
         </PokePopup>
       )}
