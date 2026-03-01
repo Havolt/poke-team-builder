@@ -73,7 +73,7 @@ function App() {
         </main>
       </div>
       {currInfoMon !== null && (
-        <PokePopup>
+        <PokePopup handleClose={() => setCurrInfoMon(null)}>
           <PokeInfo currInfoMon={currInfoMon} />
         </PokePopup>
       )}
