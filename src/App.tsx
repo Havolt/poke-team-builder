@@ -50,8 +50,24 @@ function App() {
 
     try {
       pokedex[pokemonId] = "fetching"; // Mark as loading
-      const response = await fetch(`${links.pokeApiBaseUrl}${pokemonId}`);
-      const data = await response.json();
+      const basePokePromise = fetch(
+        `${links.pokeApiBaseUrl}/pokemon/${pokemonId}`,
+      );
+      const flavorPokemonPromise = fetch(
+        `${links.pokeApiBaseUrl}/pokemon-species/${pokemonId}`,
+      );
+      // const response = await fetch(`${links.pokeApiBaseUrl}${pokemonId}`);
+      const returnedData = await Promise.all([
+        basePokePromise,
+        flavorPokemonPromise,
+      ]);
+
+      if (!returnedData[0].ok || !returnedData[1].ok) {
+        throw new Error("HTTP error!");
+      }
+      const dataA = await returnedData[0].json();
+      const dataB = await returnedData[1].json();
+      const data = { ...dataA, ...dataB };
       pokedex[pokemonId] = data;
       console.log("Fetched Pokémon data:", data);
       setCurrMonData(data);
@@ -83,7 +99,7 @@ function App() {
       </div>
       {currInfoMon !== null && (
         <PokePopup handleClose={handleUnselectPokemon}>
-          <PokeInfo currInfoMon={currInfoMon} />
+          <PokeInfo currMonData={currMonData} />
         </PokePopup>
       )}
     </>

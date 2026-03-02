@@ -1,6 +1,6 @@
-function PokeInfo({ currInfoMon }: { currInfoMon: number | null }) {
+function PokeInfo({ currMonData }: { currMonData: any }) {
   return (
-    <div className="poke-info">PokeInfo for Pokémon ID: {currInfoMon}</div>
+    <div className="poke-info">PokeInfo for Pokémon ID: {currMonData?.id}</div>
   );
 }
 
