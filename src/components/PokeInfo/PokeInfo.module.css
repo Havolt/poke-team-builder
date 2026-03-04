@@ -1,0 +1,17 @@
+.poke-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.poke-image {
+  width: 260px;
+  height: 260px;
+}
+
+.poke-name {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  margin: 0;
+}
