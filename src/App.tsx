@@ -31,6 +31,7 @@ function App() {
 
   const handleUnselectPokemon = () => {
     setCurrInfoMon(null);
+    setCurrMonData(null);
   };
 
   const handleSelectPokemon = (id: number) => {

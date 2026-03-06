@@ -8,6 +8,9 @@
 .poke-image {
   width: 260px;
   height: 260px;
+  min-width: 260px;
+  min-height: 260px;
+  object-fit: contain;
 }
 
 .poke-name {
