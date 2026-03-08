@@ -11,7 +11,17 @@ function PokeInfo({ currMonData }: { currMonData: any }) {
       <h2 className={Styles["poke-name"]}>
         {`${currMonData?.name} (#${currMonData?.id})`}
       </h2>
-      <p>Type: {currMonData?.type?.join(", ")}</p>
+      <p>
+        Type(s):{" "}
+        {currMonData?.types?.map((type: any) => (
+          <span
+            className={`${Styles["poke-type"]} type--${type.type.name}`}
+            key={type.type.name}
+          >
+            {type.type.name}
+          </span>
+        ))}
+      </p>
     </div>
   );
 }
