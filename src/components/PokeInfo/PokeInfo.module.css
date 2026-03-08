@@ -18,13 +18,3 @@
   text-transform: capitalize;
   margin: 0;
 }
-
-.poke-type {
-  font-size: 1.2rem;
-  border: 0.1rem solid #ccc;
-  border-radius: 5px;
-  background-color: grey;
-  padding: 0.4rem 0.6rem 0.5rem 0.6rem;
-  text-align: center;
-  vertical-align: middle;
-}

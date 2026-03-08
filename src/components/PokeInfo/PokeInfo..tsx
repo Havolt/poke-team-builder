@@ -1,3 +1,4 @@
+import PokeType from "../PokeType";
 import Styles from "./PokeInfo.module.css";
 
 function PokeInfo({ currMonData }: { currMonData: any }) {
@@ -13,13 +14,8 @@ function PokeInfo({ currMonData }: { currMonData: any }) {
       </h2>
       <p>
         Type(s):{" "}
-        {currMonData?.types?.map((type: any) => (
-          <span
-            className={`${Styles["poke-type"]} type--${type.type.name}`}
-            key={type.type.name}
-          >
-            {type.type.name}
-          </span>
+        {currMonData?.types?.map((singleType: any) => (
+          <PokeType type={singleType.type.name} key={singleType.type.name} />
         ))}
       </p>
     </div>
