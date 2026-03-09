@@ -2,6 +2,15 @@ import PokeType from "../PokeType";
 import Styles from "./PokeInfo.module.css";
 
 function PokeInfo({ currMonData }: { currMonData: any }) {
+  // If the data is still loading, show a loading message
+  if (!currMonData) {
+    return (
+      <div className={Styles["poke-info"]}>
+        <p className={Styles["poke-name"]}>Loading...</p>
+      </div>
+    );
+  }
+
   return (
     <div className={Styles["poke-info"]}>
       <img
