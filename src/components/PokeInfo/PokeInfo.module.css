@@ -18,3 +18,8 @@
   text-transform: capitalize;
   margin: 0;
 }
+
+.poke-types {
+  display: flex;
+  gap: 10px;
+}

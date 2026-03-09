@@ -1,6 +1,6 @@
 .poke-type {
   font-size: 1.2rem;
-  border: 0.1rem solid #ccc;
+  border: 0.1rem solid #707070;
   border-radius: 5px;
   background-color: grey;
   padding: 0.4rem 0.6rem 0.5rem 0.6rem;
@@ -25,11 +25,11 @@
 .poke-type.electric {
   background-color: #f8d030;
   color: black;
-  border-color: black;
 }
 
 .poke-type.ice {
   background-color: #98d8d8;
+  color: black;
 }
 
 .poke-type.fighting {
@@ -42,6 +42,7 @@
 
 .poke-type.ground {
   background-color: #e0c068;
+  color: black;
 }
 
 .poke-type.flying {
@@ -50,6 +51,7 @@
 
 .poke-type.psychic {
   background-color: #f85888;
+  color: black;
 }
 
 .poke-type.bug {
@@ -78,6 +80,7 @@
 
 .poke-type.fairy {
   background-color: #ee99ac;
+  color: black;
 }
 
 .poke-type.normal {
